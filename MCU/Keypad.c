@@ -1,71 +1,63 @@
 #include<reg51.h>
-
-
-
-void display(unsigned char num)
-{
-	P0 = ~(num);
-
-}
-
 void main()
 {
+	while(1)
+	{
+		P0=0b11110111; //checking first row
+		if (P0_6==0) // 1 is pressed
+		{
+			P1=0b11111110;
+			break;
+		}
+		else if (P0_5==0) // 2 is pressed
+		{
+			P1=0b11111101;
+			break;
+		}
+		else if (P0_4==0) // 3 is pressed
+		{
+			P1=0b11111100;
+			break;
+		}
 
-while(1)
-{
-	int C1 = P1_6;
-	int C2 = P1_5;
-	int C3 = P1_4;
-	
-	int R1 = P1_3;
-	int R2 = P1_2;
-	int R3 = P1_1;
-	int R4 = P1_0;
-
-	 P0 = 0xFF;
-	 P2 = 0xFF;
-	 P1 = 0xFF;
-
-	 R4 = 0;
-	 if( C2 == 0)
-		 {display(0);
-		  R4=1;}
-
-	 R4=R1=R2=R3=1;
-	 R1=0;
-	 if (C1 == 0)
-		 {display(1);
-		  R1=1;}
-	 if(C2 == 0)
-		 {display(2);
-		  R1=1;}
-	 if(C3 == 0)
-		 {display(3);
-		  R1=1;}
-
-	 R4=R1=R2=R3=1;
-	 R2 =0;
-	 if (C1 == 0)
-		 {display(4);
-		  R2=1;}
-	 if(C2 == 0)
-		 {display(5);
-		  R2=1;}
-	 if(C3 == 0)
-		 {display(6);
-		  R2=1;}
-
-	 R4=R1=R2=R3=1;
-	 R3=0;
-	 if (C1 == 0)
-		 {display(7);
-		  R3=1;}
-	 if(C2 == 0)
-		 {display(8);
-		  R3=1;}
-	 if(C3 == 0)
-		 {display(9);
-		  R3=1;}
-
-}
+		P0=0b11111011; // checking second row
+		if (P0_6==0)  // 4 is pressed
+		{
+			P1=0b11111011;
+			break;
+		}
+		else if (P0_5==0) // 5 is pressed
+		{
+			P1=0b11111010;
+			break;
+		}
+		else if (P0_4==0) // 6 is pressed
+		{
+			P1=0b11111001;
+			break;
+		}
+		P0=0b11111101; // checking third row
+		if (P0_6==0) // 7 is pressed
+		{
+			P1=0b11111000;
+			break;
+		}
+		else if (P0_5==0) // 8 is pressed
+		{
+			P1=0b11110111;
+			break;
+		}
+		else if (P0_4==0) // 9 is pressed
+		{
+			P1=0b11110110;
+			break;
+		}
+		P0=0b11111110; // checking last row
+		if (P0_5==0) // 0 is pressed
+		{
+			P1=0b11111111;
+			break;
+		}
+		P1=0b00000000; // if nothing is pressed, all leds will glow
+	}
 }
