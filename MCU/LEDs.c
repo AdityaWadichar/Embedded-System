@@ -1,12 +1,11 @@
 #include<reg51.h>
 
 // pattern of led panel to display
-unsigned char led[] = { 0b11111110,0b11111101,0b11111011,0b11110111,0b11101111,0b11011111,0b10111111,0b01111111};
+unsigned char led[] = { 0xFE, 0xFD, 0xFB, 0xF7, 0xEF, 0xDF, 0xBF, 0x7F};
 
-int i = 0;
 void main()
 {
-
+	int i;
 	while(1)  // for continuous blinking of leds
 	{
 	    for(i = 0; i<8 ;i++) // anticlockwis 
@@ -18,8 +17,5 @@ void main()
 	    {
 	       P1 = led[i];
 	    }
-
-	            
 	}
-
 }
