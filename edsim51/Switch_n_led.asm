@@ -1,0 +1,2 @@
+HERE: MOV P1, P2
+JMP HERE
