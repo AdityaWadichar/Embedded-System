@@ -1,0 +1,16 @@
+#include <reg66x.h> // include file for P89C66X microcontrollers
+void main()
+{
+S1CON = 0x44;
+STA = 1;        // START 
+while (!SI);  // wait until SI = 1 to confirm
+STA = 0;        // START 
+S1DAT = 0xAA; // send slave address + W 
+SI = 0;             // clear SI bit
+while (!SI);  // wait until SI = 1 to confirm 
+S1DAT = 0x20; // send data 25H
+SI = 0;             // clear SI bit
+while (!SI);  // wait until SI = 1 to confirm
+STO = 1;             // set STO to generate STOP condition
+while (1);
+}
